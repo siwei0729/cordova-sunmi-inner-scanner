@@ -20,7 +20,7 @@
       </js-module>
       <config-file target="res/xml/config.xml" parent="/*">
         <feature name="MyCordovaPlugin">
-          <param name="android-package" value="com.example.MyCordovaPlugin" />
+          <param name="android-package" value="com.example.SunmiScanner" />
           <param name="onload" value="true" />
         </feature>
       </config-file>
