@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    id="my-cordova-plugin"
+    id="cordova-sunmi-inner-scanner"
     version="1.0.0">
-    <name>Cordova Plugin Template</name>
+    <name>Cordova Sunmi Inner Scanner</name>
     <description></description>
     <license>MIT</license>
     <keywords></keywords>
@@ -16,7 +16,7 @@
         <runs/>
 
         <!-- This is the window variable name you want, like window.MyCordovaPlugin -->
-        <clobbers target="MyCordovaPlugin" />
+        <clobbers target="SunmiScanner" />
       </js-module>
       <config-file target="res/xml/config.xml" parent="/*">
         <feature name="MyCordovaPlugin">
@@ -25,22 +25,7 @@
         </feature>
       </config-file>
 
-      <source-file src="src/android/com/example/MyCordovaPlugin.java" target-dir="src/com/example/" />
+      <source-file src="src/android/com/example/SunmiScanner.java" target-dir="src/com/example/" />
     </platform>
 
-    <!-- ios -->
-    <platform name="ios">
-        <js-module src="www/plugin.js" name="plugin">
-            <runs/>
-            <clobbers target="MyCordovaPlugin" />
-        </js-module>
-        <config-file target="config.xml" parent="/*">
-            <feature name="MyCordovaPlugin">
-                <param name="ios-package" value="MyCordovaPlugin" onload="true" />
-            </feature>
-        </config-file>
-
-        <header-file src="src/ios/MyCordovaPlugin.h" />
-        <source-file src="src/ios/MyCordovaPlugin.m" />
-    </platform>
 </plugin>

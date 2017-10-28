@@ -16,7 +16,7 @@ import android.util.Log;
 
 import java.util.Date;
 
-public class MyCordovaPlugin extends CordovaPlugin {
+public class SunmiScanner extends CordovaPlugin {
   private static final String TAG = "MyCordovaPlugin";
 
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
