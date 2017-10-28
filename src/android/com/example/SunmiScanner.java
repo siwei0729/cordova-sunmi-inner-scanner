@@ -12,12 +12,18 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class SunmiScanner extends CordovaPlugin {
     private static final String TAG = "SunmiScanner";
+    public static final int REQUEST_CODE = 1;
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
@@ -53,6 +59,8 @@ public class SunmiScanner extends CordovaPlugin {
 
         intent.setPackage("com.sunmi.sunmiqrcodescanner");
 
+        intent.putExtra("CURRENT_PPI", 0X0003);//当前分辨率
+        intent.putExtra("IS_SHOW_ALBUM", false);// 是否显示从相册选择图片按钮，默认true
 
         /**
 
@@ -93,13 +101,13 @@ public class SunmiScanner extends CordovaPlugin {
          intent.putExtra("IS_SHOW_ALBUM", true);// 是否显示从相册选择图片按钮，默认true
 
          */
-
-        startActivityForResult(intent, START_SCAN);
+        final CordovaPlugin that = this;
+        that.cordova.startActivityForResult(that, intent, REQUEST_CODE);
     }
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 1 && data != null) {
 
