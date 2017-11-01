@@ -4,7 +4,7 @@ Sunmi Inner Scanner Cordova Plugin
 Tested on V1 machine.
 
 
-##Install
+## Install
 
 #### before Cordova@7.0
 cordova plugin add https://github.com/siwei0729/cordova-sunmi-inner-scanner.git
