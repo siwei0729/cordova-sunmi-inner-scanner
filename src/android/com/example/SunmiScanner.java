@@ -111,34 +111,27 @@ public class SunmiScanner extends CordovaPlugin {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+        String scanResult = null;
         if (requestCode == 1 && data != null) {
-
             Bundle bundle = data.getExtras();
-
             ArrayList<HashMap<String, String>> result = (ArrayList<HashMap<String, String>>) bundle.getSerializable("data");
-
-
             Iterator<HashMap<String, String>> it = result.iterator();
 
-            String scanResult = null;
             while (it.hasNext()) {
-
                 HashMap<String, String> hashMap = it.next();
                 Log.i("sunmi", hashMap.get("TYPE"));//这个是扫码的类型
                 Log.i("sunmi", hashMap.get("VALUE"));//这个是扫码的结果
                 scanResult = hashMap.get("VALUE");
             }
-
-            if(scanResult!=null)
-                callbackContext.success(scanResult);
-            else
-                callbackContext.error("Fail");
-
         }
+
+        if(scanResult!=null)
+            callbackContext.success(scanResult);
+        else
+            callbackContext.error("Fail");
 
         super.onActivityResult(requestCode, resultCode, data);
 
-    }
+    } 
 
 }
