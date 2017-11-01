@@ -1,4 +1,32 @@
-Cordova Plugin Template
+Sunmi Inner Scanner Cordova Plugin 
 ======
 
-This is a simple starting point for building a Cordova plugin on iOS and Android.
+Tested on V1 machine.
+
+
+##Install
+
+#### before Cordova@7.0
+cordova plugin add https://github.com/siwei0729/cordova-sunmi-inner-scanner.git
+
+#### after Cordova@7.0
+cordova plugin add https://github.com/siwei0729/cordova-sunmi-inner-scanner.git --nofetch
+
+
+## Usage
+
+    export class CalculatorPage {
+    
+        windowObj:any = window;
+    
+        constructor() {}
+        
+        scan(){
+             this.windowObj.SunmiScanner.scan()
+                        .then((barcodeData) => {
+                            console.log(barcodeData);
+                        }).catch((e) => {
+                            console.log(e);
+                    });
+        }
+    }
