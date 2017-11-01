@@ -15,7 +15,7 @@ cordova plugin add https://github.com/siwei0729/cordova-sunmi-inner-scanner.git 
 
 ## Usage
 
-    export class CalculatorPage {
+    export class YourAppPage {
     
         windowObj:any = window;
     
