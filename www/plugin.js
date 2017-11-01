@@ -10,7 +10,11 @@ var SunmiScanner = {
         exec(cb, null, PLUGIN_NAME, 'getDate', []);
     },
     scan: function (cb) {
-        exec(cb, null, PLUGIN_NAME, 'scan', []);
+        return new Promise(function (resolve, reject) {
+            //cordova.exec(resolve, reject, "Printer", "getPrinterVersion", []);
+            exec(resolve, reject, PLUGIN_NAME, 'scan', []);
+        });
+
     }
 };
 

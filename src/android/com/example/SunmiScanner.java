@@ -24,6 +24,7 @@ import java.util.Iterator;
 public class SunmiScanner extends CordovaPlugin {
     private static final String TAG = "SunmiScanner";
     public static final int REQUEST_CODE = 1;
+    CallbackContext callbackContext = null;
 
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
@@ -32,6 +33,8 @@ public class SunmiScanner extends CordovaPlugin {
     }
 
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
+        this.callbackContext = callbackContext;
+
         if (action.equals("echo")) {
             String phrase = args.getString(0);
             // Echo back the first argument
@@ -113,24 +116,24 @@ public class SunmiScanner extends CordovaPlugin {
 
             Bundle bundle = data.getExtras();
 
-            ArrayList<HashMap<String, String>> result = (ArrayList<HashMap<String, String>>) bundle
-
-                    .getSerializable("data");
+            ArrayList<HashMap<String, String>> result = (ArrayList<HashMap<String, String>>) bundle.getSerializable("data");
 
 
             Iterator<HashMap<String, String>> it = result.iterator();
 
+            String scanResult = null;
             while (it.hasNext()) {
 
                 HashMap<String, String> hashMap = it.next();
-
-
                 Log.i("sunmi", hashMap.get("TYPE"));//这个是扫码的类型
-
                 Log.i("sunmi", hashMap.get("VALUE"));//这个是扫码的结果
-
-
+                scanResult = hashMap.get("VALUE");
             }
+
+            if(scanResult!=null)
+                callbackContext.success(scanResult);
+            else
+                callbackContext.error("Fail");
 
         }
 
