@@ -1,8 +1,8 @@
 {
-  "name": "cordova-plugin-template",
+  "name": "cordova-sunmi-inner-scanner",
   "version": "1.0.0",
   "cordova": {
-    "id": "cordova-plugin-template",
+    "id": "cordova-sunmi-inner-scanner",
     "platforms": [
       "android",
       "ios"
